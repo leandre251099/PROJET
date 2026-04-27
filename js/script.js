@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const photoNextBtn = document.getElementById('photo-next');
     
     let photoCurrentIndex = 0;
+    let photoDirection = 1;
     const photoTotalSlides = 8; // 8 photos
     const photoVisibleSlides = window.innerWidth >= 1024 ? 4 : window.innerWidth >= 768 ? 3 : window.innerWidth >= 640 ? 2 : 1;
     const photoMaxIndex = photoTotalSlides - photoVisibleSlides;
@@ -106,34 +107,79 @@ document.addEventListener('DOMContentLoaded', function() {
     function nextPhoto() {
         if (photoCurrentIndex < photoMaxIndex) {
             photoCurrentIndex++;
-            updatePhotoCarousel();
         } else {
-            photoCurrentIndex = 0; // Loop back to start
-            updatePhotoCarousel();
+            photoDirection = -1;
+            photoCurrentIndex--;
         }
+        updatePhotoCarousel();
     }
 
     function prevPhoto() {
         if (photoCurrentIndex > 0) {
             photoCurrentIndex--;
-            updatePhotoCarousel();
         } else {
-            photoCurrentIndex = photoMaxIndex; // Loop to end
-            updatePhotoCarousel();
+            photoDirection = 1;
+            photoCurrentIndex++;
+        }
+        updatePhotoCarousel();
+    }
+
+    function autoPlayCarousel() {
+        if (photoDirection === 1) {
+            if (photoCurrentIndex < photoMaxIndex) {
+                photoCurrentIndex++;
+            } else {
+                photoDirection = -1;
+                photoCurrentIndex--;
+            }
+        } else {
+            if (photoCurrentIndex > 0) {
+                photoCurrentIndex--;
+            } else {
+                photoDirection = 1;
+                photoCurrentIndex++;
+            }
+        }
+
+        updatePhotoCarousel();
+    }
+
+    let autoPlayInterval = null;
+
+    function startAutoPlay() {
+        if (autoPlayInterval !== null) return;
+        autoPlayInterval = setInterval(autoPlayCarousel, 3200);
+    }
+
+    function stopAutoPlay() {
+        if (autoPlayInterval !== null) {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
         }
     }
 
     // Event listeners
     if (photoNextBtn) {
-        photoNextBtn.addEventListener('click', nextPhoto);
+        photoNextBtn.addEventListener('click', function() {
+            photoDirection = 1;
+            nextPhoto();
+        });
     }
     
     if (photoPrevBtn) {
-        photoPrevBtn.addEventListener('click', prevPhoto);
+        photoPrevBtn.addEventListener('click', function() {
+            photoDirection = -1;
+            prevPhoto();
+        });
+    }
+
+    if (photoCarousel) {
+        photoCarousel.addEventListener('mouseenter', stopAutoPlay);
+        photoCarousel.addEventListener('mouseleave', startAutoPlay);
     }
 
     // Auto-play
-    setInterval(nextPhoto, 5000);
+    startAutoPlay();
 
     // Update on window resize
     window.addEventListener('resize', function() {
