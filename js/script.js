@@ -24,12 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Fermer le menu mobile après navigation
                 const mobileMenu = document.getElementById('mobile-menu');
-                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('opacity-0', '-translate-y-2');
-                    mobileMenu.classList.remove('opacity-100', 'translate-y-0');
-                    setTimeout(() => {
-                        mobileMenu.classList.add('hidden');
-                    }, 300);
+                if (mobileMenu) {
+                    mobileMenu.classList.add('hidden');
                 }
             }
         });
@@ -41,17 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', function() {
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.remove('hidden', 'opacity-0', '-translate-y-2');
-                mobileMenu.classList.add('opacity-100', 'translate-y-0');
-            } else {
-                mobileMenu.classList.add('opacity-0', '-translate-y-2');
-                mobileMenu.classList.remove('opacity-100', 'translate-y-0');
-                // Delay hiding to allow animation
-                setTimeout(() => {
-                    mobileMenu.classList.add('hidden');
-                }, 300);
-            }
+            mobileMenu.classList.toggle('hidden');
         });
     }
 
