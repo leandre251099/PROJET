@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PEG BTP Service 3D - Expert en dératisation, désinsectisation, désinfection et traitements BTP à Libreville et au Gabon.">
+    <title>PEG BTP Service 3D - Lutte contre les Nuisibles | Libreville</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- CSS personnalisé -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-zinc-50 text-zinc-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4 flex justify-between items-center">
+            <div class="flex items-center gap-1 sm:gap-2 md:gap-3">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12 bg-green-600 rounded-xl flex items-center justify-center text-white text-lg sm:text-2xl md:text-3xl">🛡️</div>
+                    <div>
+                        <h1 class="text-xs sm:text-sm md:text-lg lg:text-2xl font-bold text-green-700 leading-tight">PEG BTP<br class="sm:hidden"><span class="hidden sm:inline"> </span>Service 3D</h1>
+                </div>
+            </div>
+            
+            <div class="hidden lg:flex items-center gap-8 text-lg">
+                <a href="#accueil" class="nav-link font-medium">Accueil</a>
+                <a href="#services" class="nav-link font-medium">Services</a>
+                <a href="#pourquoi" class="nav-link font-medium">Pourquoi nous ?</a>
+                <a href="#temoignages" class="nav-link font-medium">Avis</a>
+                <a href="#contact" class="nav-link font-medium">Contact</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-zinc-800 text-lg p-1.5">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-white shadow-lg py-2 sm:py-3 px-2 sm:px-4">
+                <a href="#accueil" class="block py-1.5 sm:py-2 text-zinc-800 font-medium text-sm sm:text-base">Accueil</a>
+                <a href="#services" class="block py-1.5 sm:py-2 text-zinc-800 font-medium text-sm sm:text-base">Services</a>
+                <a href="#pourquoi" class="block py-1.5 sm:py-2 text-zinc-800 font-medium text-sm sm:text-base">Pourquoi nous ?</a>
+                <a href="#temoignages" class="block py-1.5 sm:py-2 text-zinc-800 font-medium text-sm sm:text-base">Avis</a>
+                <a href="#contact" class="block py-1.5 sm:py-2 text-zinc-800 font-medium text-sm sm:text-base">Contact</a>
+            </div>
+            
+            <a href="#contact" class="bg-green-600 hover:bg-green-700 text-white px-2 py-1 sm:px-4 sm:py-1.5 md:px-5 md:py-2 lg:px-8 lg:py-3 rounded-full font-semibold text-xs sm:text-sm md:text-base lg:text-base transition-all flex items-center gap-0.5 sm:gap-2 whitespace-nowrap">
+                <i class="fas fa-phone text-xs sm:text-sm"></i> <span class="hidden sm:inline">Devis</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="accueil" class="hero-bg h-screen flex items-center text-white">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 text-center" data-aos="fade-up">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight">
+                Adieu les nuisibles !<br>
+                <span class="text-green-400">Solutions 3D efficaces</span>
+            </h2>
+            <p class="text-sm sm:text-base md:text-xl lg:text-2xl mb-4 sm:mb-6 md:mb-10 max-w-2xl mx-auto">
+                Dératisation • Désinsectisation • Désinfection • Traitements BTP<br>
+                Intervention rapide à Libreville et partout au Gabon
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center">
+                <a href="#contact" class="bg-green-600 hover:bg-green-700 text-white px-5 sm:px-8 md:px-10 py-2.5 sm:py-3 md:py-5 rounded-2xl text-base sm:text-lg md:text-xl font-semibold transition-all flex items-center justify-center gap-2">
+                    Demander un devis gratuit
+                </a>
+                <a href="tel:0778899994" class="border-2 border-white hover:bg-white hover:text-zinc-900 text-white px-5 sm:px-8 md:px-10 py-2.5 sm:py-3 md:py-5 rounded-2xl text-base sm:text-lg md:text-xl font-semibold transition-all flex items-center justify-center gap-2">
+                    <i class="fas fa-phone"></i> <span class="hidden sm:inline">07 78 89 99 94</span><span class="sm:hidden">Appeler</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-8 sm:py-12 md:py-20 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
+            <div class="text-center mb-8 sm:mb-12 md:mb-16" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">Nos Services</h2>
+                <p class="text-zinc-600 max-w-xl mx-auto text-xs sm:text-sm md:text-base">Des solutions professionnelles et durables pour protéger vos espaces</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+                <div class="service-card bg-white border border-zinc-100 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 bg-red-100 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 md:mb-5 lg:mb-6 pest-icon">🐀</div>
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3">Dératisation</h3>
+                    <p class="text-zinc-600 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Élimination complète des rats, souris et rongeurs avec méthodes sécurisées.</p>
+                    <ul class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Traitement intérieur & extérieur</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Suivi et prévention</li>
+                    </ul>
+                </div>
+
+                <div class="service-card bg-white border border-zinc-100 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 bg-amber-100 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 md:mb-5 lg:mb-6 pest-icon">🪳</div>
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3">Désinsectisation</h3>
+                    <p class="text-zinc-600 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Cafards, punaises de lit, termites, fourmis, moustiques...</p>
+                    <ul class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Traitement thermique punaises</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Démoustication</li>
+                    </ul>
+                </div>
+
+                <div class="service-card bg-white border border-zinc-100 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 bg-blue-100 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 md:mb-5 lg:mb-6 pest-icon">🦠</div>
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3">Désinfection & BTP</h3>
+                    <p class="text-zinc-600 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Désinfection des locaux, traitement anti-termite et services BTP.</p>
+                    <ul class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Fumigation</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Nettoyage post-sinistre</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pourquoi nous -->
+    <section id="pourquoi" class="py-8 sm:py-12 md:py-20 lg:py-24 bg-zinc-900 text-white">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 md:mb-8">Pourquoi choisir PEG BTP Service 3D ?</h2>
+                    <div class="space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10">
+                        <div class="flex gap-3 sm:gap-4 md:gap-6">
+                            <div class="text-4xl sm:text-5xl text-green-500">⚡</div>
+                            <div>
+                                <h4 class="font-semibold text-lg sm:text-xl mb-2">Intervention ultra-rapide</h4>
+                                <p class="text-zinc-400 text-sm sm:text-base">Dans les 24h à Libreville et environs.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 sm:gap-6">
+                            <div class="text-4xl sm:text-5xl text-green-500">🛡️</div>
+                            <div>
+                                <h4 class="font-semibold text-lg sm:text-xl mb-2">Produits homologués</h4>
+                                <p class="text-zinc-400 text-sm sm:text-base">Sécurisés pour les humains et animaux domestiques.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 sm:gap-6">
+                            <div class="text-4xl sm:text-5xl text-green-500">♻️</div>
+                            <div>
+                                <h4 class="font-semibold text-lg sm:text-xl mb-2">Solutions écologiques</h4>
+                                <p class="text-zinc-400 text-sm sm:text-base">Méthodes modernes et respectueuses de l’environnement.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-zinc-800 rounded-3xl p-4 sm:p-6 md:p-8 lg:p-10" data-aos="fade-left">
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 sm:mb-6 md:mb-8">Nos engagements</h3>
+                    <ul class="space-y-3 sm:space-y-4 md:space-y-6 text-xs sm:text-sm md:text-base lg:text-lg">
+                        <li class="flex items-start gap-3 sm:gap-4"><span class="text-green-500 text-lg sm:text-xl md:text-2xl flex-shrink-0">✔</span> Devis gratuit et sans engagement</li>
+                        <li class="flex items-start gap-4"><span class="text-green-500 text-xl sm:text-2xl">✔</span> Garantie sur tous les traitements</li>
+                        <li class="flex items-start gap-4"><span class="text-green-500 text-xl sm:text-2xl">✔</span> Techniciens certifiés et expérimentés</li>
+                        <li class="flex items-start gap-4"><span class="text-green-500 text-xl sm:text-2xl">✔</span> Suivi après intervention</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages -->
+    <section id="temoignages" class="py-8 sm:py-12 md:py-20 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 md:mb-16" data-aos="fade-up">Ce que disent nos clients</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+                <div class="bg-zinc-50 p-6 sm:p-7 md:p-8 rounded-3xl" data-aos="fade-up">
+                    <div class="flex text-yellow-400 mb-4 sm:mb-6 text-lg sm:text-xl">★★★★★</div>
+                    <p class="italic mb-4 sm:mb-6 text-sm sm:text-base">"Intervention très rapide et efficace. Plus aucun cafard chez moi après leur passage."</p>
+                    <div class="font-semibold text-sm sm:text-base">Marie K. - Libreville</div>
+                </div>
+                <div class="bg-zinc-50 p-6 sm:p-7 md:p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex text-yellow-400 mb-4 sm:mb-6 text-lg sm:text-xl">★★★★☆</div>
+                    <p class="italic mb-4 sm:mb-6 text-sm sm:text-base">"Traitement professionnel pour nos bureaux. L'équipe est sérieuse et discrète."</p>
+                    <div class="font-semibold text-sm sm:text-base">Entreprise ABC - Owendo</div>
+                </div>
+                <div class="bg-zinc-50 p-6 sm:p-7 md:p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex text-yellow-400 mb-4 sm:mb-6 text-lg sm:text-xl">★★★★★</div>
+                    <p class="italic mb-4 sm:mb-6 text-sm sm:text-base">"Ils ont résolu notre problème de termites en une seule intervention."</p>
+                    <div class="font-semibold text-sm sm:text-base">Sophie E. - Akanda</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-green-700 text-white py-12 sm:py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">Prêt à retrouver un environnement sain ?</h2>
+                    <p class="text-lg sm:text-xl mb-6 sm:mb-10">Contactez-nous dès aujourd’hui pour un diagnostic gratuit et un devis personnalisé.</p>
+                    
+                    <div class="space-y-6 sm:space-y-8">
+                        <div class="flex items-center gap-4 sm:gap-6">
+                            <i class="fas fa-phone text-3xl sm:text-4xl"></i>
+                            <div>
+                                <p class="font-semibold text-sm sm:text-base">Appelez-nous</p>
+                                <a href="tel:0778899994" class="text-xl sm:text-2xl">07 78 89 99 94</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 sm:gap-6">
+                            <i class="fas fa-map-marker-alt text-3xl sm:text-4xl"></i>
+                            <div>
+                                <p class="font-semibold text-sm sm:text-base">Libreville - Gabon</p>
+                                <p class="text-sm sm:text-base">Intervention sur tout le territoire</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 sm:gap-6">
+                            <i class="fas fa-clock text-3xl sm:text-4xl"></i>
+                            <div>
+                                <p class="font-semibold text-sm sm:text-base">Disponibilité</p>
+                                <p class="text-sm sm:text-base">7 jours sur 7 • Urgence 24h/24</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="contactForm" class="bg-white text-zinc-900 p-4 sm:p-5 md:p-7 lg:p-10 rounded-3xl shadow-2xl" data-aos="fade-left">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5">
+                        <input type="text" id="nom" placeholder="Votre nom" class="border border-zinc-300 p-2.5 sm:p-3 md:p-4 rounded-2xl focus:outline-none focus:border-green-600 text-xs sm:text-sm md:text-base">
+                        <input type="tel" id="telephone" placeholder="Téléphone" class="border border-zinc-300 p-2.5 sm:p-3 md:p-4 rounded-2xl focus:outline-none focus:border-green-600 text-xs sm:text-sm md:text-base">
+                    </div>
+                    <input type="email" id="email" placeholder="Votre email" class="mt-3 sm:mt-4 md:mt-5 w-full border border-zinc-300 p-2.5 sm:p-3 md:p-4 rounded-2xl focus:outline-none focus:border-green-600 text-xs sm:text-sm md:text-base">
+                    <textarea id="message" placeholder="Décrivez votre problème (cafards, rats, punaises, termites...)" rows="4" class="mt-3 sm:mt-4 md:mt-5 w-full border border-zinc-300 p-2.5 sm:p-3 md:p-4 rounded-2xl focus:outline-none focus:border-green-600 text-xs sm:text-sm md:text-base"></textarea>
+                    
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 sm:mt-6 md:mt-8">
+                        <button type="button" id="whatsappBtn" class="flex-1 bg-green-600 hover:bg-green-700 text-white py-2.5 sm:py-3 md:py-4 lg:py-5 rounded-2xl font-semibold text-xs sm:text-sm md:text-base lg:text-lg transition-all text-center flex items-center justify-center gap-1.5 sm:gap-2">
+                            <i class="fab fa-whatsapp"></i> <span class="hidden sm:inline">WhatsApp</span>
+                        </button>
+                        <button type="button" id="emailBtn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2.5 sm:py-3 md:py-4 lg:py-5 rounded-2xl font-semibold text-xs sm:text-sm md:text-base lg:text-lg transition-all text-center flex items-center justify-center gap-1.5 sm:gap-2">
+                            <i class="fas fa-envelope"></i> <span class="hidden sm:inline">Email</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-900 text-zinc-400 py-6 sm:py-8 md:py-12">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 text-center">
+            <p class="text-xs sm:text-sm md:text-base">&copy; 2026 PEG BTP Service 3D - Tous droits réservés</p>
+            <p class="text-xs mt-1.5 sm:mt-2">Entreprise spécialisée en lutte contre les nuisibles et hygiène au Gabon</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

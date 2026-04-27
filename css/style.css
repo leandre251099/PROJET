@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Hero Background */
+.hero-bg {
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), 
+                url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat;
+    background-attachment: fixed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-bg {
+        background-attachment: scroll;
+    }
+}
+
+/* Navigation Link */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #22c55e;
+    transition: width 0.4s ease;
+}
+
+.nav-link:hover:after {
+    width: 100%;
+}
+
+/* Service Cards */
+.service-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+.pest-icon {
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .pest-icon {
+    transform: rotate(15deg) scale(1.25);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-bg {
+        background-attachment: scroll;
+    }
+    
+    h2 {
+        font-size: 2.5rem;
+    }
+}
