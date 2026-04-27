@@ -67,3 +67,28 @@ body {
         font-size: 2.5rem;
     }
 }
+
+.footer-social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 9999px;
+    background-color: rgba(255,255,255,0.08);
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.footer-social-btn:hover {
+    background-color: rgba(34,197,94,0.15);
+    transform: translateY(-2px);
+}
+
+.footer-logo {
+    min-width: 256px;
+}
+
+.footer-logo-icon {
+    min-width: 44px;
+    min-height: 44px;
+}
