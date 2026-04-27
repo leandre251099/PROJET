@@ -92,3 +92,26 @@ body {
     min-width: 44px;
     min-height: 44px;
 }
+
+/* Photo Carousel */
+.photo-carousel {
+    width: 400%; /* 8 photos */
+}
+
+@media (min-width: 640px) {
+    .photo-carousel {
+        width: 400%; /* 8 photos for 2 visible */
+    }
+}
+
+@media (min-width: 768px) {
+    .photo-carousel {
+        width: 266.666667%; /* 8 photos for 3 visible */
+    }
+}
+
+@media (min-width: 1024px) {
+    .photo-carousel {
+        width: 200%; /* 8 photos for 4 visible */
+    }
+}

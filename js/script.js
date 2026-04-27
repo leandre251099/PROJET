@@ -85,4 +85,61 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = url;
         });
     }
+
+    // Photo Carousel
+    const photoCarousel = document.getElementById('photo-carousel');
+    const photoPrevBtn = document.getElementById('photo-prev');
+    const photoNextBtn = document.getElementById('photo-next');
+    
+    let photoCurrentIndex = 0;
+    const photoTotalSlides = 8; // 8 photos
+    const photoVisibleSlides = window.innerWidth >= 1024 ? 4 : window.innerWidth >= 768 ? 3 : window.innerWidth >= 640 ? 2 : 1;
+    const photoMaxIndex = photoTotalSlides - photoVisibleSlides;
+
+    function updatePhotoCarousel() {
+        if (photoCarousel) {
+            const translateX = -photoCurrentIndex * (100 / photoVisibleSlides);
+            photoCarousel.style.transform = `translateX(${translateX}%)`;
+        }
+    }
+
+    function nextPhoto() {
+        if (photoCurrentIndex < photoMaxIndex) {
+            photoCurrentIndex++;
+            updatePhotoCarousel();
+        } else {
+            photoCurrentIndex = 0; // Loop back to start
+            updatePhotoCarousel();
+        }
+    }
+
+    function prevPhoto() {
+        if (photoCurrentIndex > 0) {
+            photoCurrentIndex--;
+            updatePhotoCarousel();
+        } else {
+            photoCurrentIndex = photoMaxIndex; // Loop to end
+            updatePhotoCarousel();
+        }
+    }
+
+    // Event listeners
+    if (photoNextBtn) {
+        photoNextBtn.addEventListener('click', nextPhoto);
+    }
+    
+    if (photoPrevBtn) {
+        photoPrevBtn.addEventListener('click', prevPhoto);
+    }
+
+    // Auto-play
+    setInterval(nextPhoto, 5000);
+
+    // Update on window resize
+    window.addEventListener('resize', function() {
+        const newVisibleSlides = window.innerWidth >= 1024 ? 4 : window.innerWidth >= 768 ? 3 : window.innerWidth >= 640 ? 2 : 1;
+        if (newVisibleSlides !== photoVisibleSlides) {
+            location.reload(); // Simple solution for responsive carousel
+        }
+    });
 });
