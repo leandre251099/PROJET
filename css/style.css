@@ -97,6 +97,7 @@ body {
 .photo-carousel {
     width: 100%;
     overflow: visible;
+    touch-action: pan-y; /* Permet le défilement vertical de la page tout en gérant le swipe horizontal */
 }
 
 .photo-carousel > div {
