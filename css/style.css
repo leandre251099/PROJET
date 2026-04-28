@@ -95,28 +95,7 @@ body {
 
 /* Photo Carousel */
 .photo-carousel {
-    width: 400%; /* 1 image visible on small screens */
-}
-
-@media (min-width: 640px) {
-    .photo-carousel {
-        width: 200%; /* 2 images visible */
-    }
-}
-
-@media (min-width: 768px) {
-    .photo-carousel {
-        width: 133.333333%; /* 3 images visible */
-    }
-}
-
-@media (min-width: 1024px) {
-    .photo-carousel {
-        width: 100%; /* 4 images visible */
-    }
-}
-
-.photo-carousel {
+    width: 100%;
     overflow: visible;
 }
 
@@ -124,16 +103,6 @@ body {
     position: relative;
     transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
     transform-origin: center center;
-}
-
-.photo-carousel:hover > div:not(:hover) {
-    filter: brightness(0.55) contrast(0.85);
-}
-
-.photo-carousel > div:hover {
-    transform: scale(1.18);
-    z-index: 50;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
 .photo-carousel > div::before {
@@ -145,14 +114,26 @@ body {
     pointer-events: none;
 }
 
-.photo-carousel > div:hover::before {
-    background: rgba(0, 0, 0, 0.2);
+@media (min-width: 1024px) {
+    .photo-carousel:hover > div:not(:hover) {
+        filter: brightness(0.55) contrast(0.85);
+    }
+
+    .photo-carousel > div:hover {
+        transform: scale(1.18);
+        z-index: 50;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .photo-carousel > div:hover::before {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .photo-carousel > div:hover img {
+        transform: scale(1.14);
+    }
 }
 
 .photo-carousel > div img {
     transition: transform 0.35s ease;
-}
-
-.photo-carousel > div:hover img {
-    transform: scale(1.14);
 }
