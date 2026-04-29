@@ -46,6 +46,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const whatsappBtn = document.getElementById('whatsappBtn');
     const emailBtn = document.getElementById('emailBtn');
 
+    // Empêcher la soumission par défaut du formulaire pour éviter l'affichage des données dans l'URL
+    const contactForm = whatsappBtn ? whatsappBtn.closest('form') : document.querySelector('form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => e.preventDefault());
+    }
+
     function validateForm() {
         const nom = document.getElementById('nom').value.trim();
         const telephone = document.getElementById('telephone').value.trim();
@@ -70,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!data) return;
             
             const text = `Bonjour, je m'appelle ${data.nom}. Tél: ${data.telephone}. Email: ${data.email}. Message: ${data.message}. Je souhaite un devis.`;
-            const url = `<https://wa.me/0778899994?text=${encodeURIComponent(text)}>`;
+            const url = `https://wa.me/077959626?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         });
     }

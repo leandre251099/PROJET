@@ -48,6 +48,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const whatsappBtn = document.getElementById('whatsappBtn');
     const emailBtn = document.getElementById('emailBtn');
     
+    // Empêcher la soumission par défaut du formulaire pour éviter l'affichage des données dans l'URL
+    const contactForm = whatsappBtn ? whatsappBtn.closest('form') : document.querySelector('form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => e.preventDefault());
+    }
+
     if (whatsappBtn) {
         whatsappBtn.addEventListener('click', function(e) {
             e.preventDefault();
