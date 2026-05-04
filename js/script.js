@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let currentIndex = 0;
     let autoPlayInterval;
-    const autoPlayDelay = 5000; // 5 secondes
+    const autoPlayDelay = 8000; // 8 secondes
 
     // Array of image sources and their alt texts
     const images = thumbnailItems.map(img => ({
@@ -112,10 +112,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }));
 
     function updateSliderDisplay() {
-        // Update main image
-        mainSliderImage.src = images[currentIndex].src;
-        mainSliderImage.alt = images[currentIndex].alt;
-        
+        // Ajoute un effet de sortie (disparition et réduction)
+        mainSliderImage.classList.add('opacity-0', 'scale-95');
+
+        setTimeout(() => {
+            // Change la source de l'image pendant qu'elle est invisible
+            mainSliderImage.src = images[currentIndex].src;
+            mainSliderImage.alt = images[currentIndex].alt;
+
+            // Une fois la source mise à jour, on réaffiche avec un zoom progressif
+            mainSliderImage.classList.remove('opacity-0', 'scale-95');
+        }, 400); // Délai synchronisé avec la transition CSS
+
         // Update active thumbnail
         thumbnailItems.forEach((thumb, i) => {
             if (i === currentIndex) {
