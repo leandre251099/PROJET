@@ -94,114 +94,108 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- CARROUSEL PHOTOS ---
-
-    const photoCarousel = document.getElementById('photo-carousel');
-    const photoPrevBtn = document.getElementById('photo-prev');
-    const photoNextBtn = document.getElementById('photo-next');
+    // --- SLIDER PRINCIPAL / MINIATURES ---
+    const mainSliderImage = document.getElementById('main-slider-image');
+    const thumbnailsContainer = document.getElementById('thumbnails-container');
+    const thumbnailItems = Array.from(thumbnailsContainer.querySelectorAll('.thumbnail-item'));
+    const nextBtn = document.getElementById('nextSlide');
+    const prevBtn = document.getElementById('prevSlide');
     
-    if (photoCarousel) {
-        let photoCurrentIndex = 0;
-        let photoDirection = 1;
-        const photoTotalSlides = 8;
-        let autoPlayInterval = null;
+    let currentIndex = 0;
+    let autoPlayInterval;
+    const autoPlayDelay = 5000; // 5 secondes
 
-        function getVisibleSlides() {
-            if (window.innerWidth >= 1024) return 5;
-            if (window.innerWidth >= 768) return 3;
-            if (window.innerWidth >= 640) return 2;
-            return 1;
-        }
+    // Array of image sources and their alt texts
+    const images = thumbnailItems.map(img => ({
+        src: img.src,
+        alt: img.alt
+    }));
 
-        let photoVisibleSlides = getVisibleSlides();
-        let photoMaxIndex = photoTotalSlides - photoVisibleSlides;
+    function updateSliderDisplay() {
+        // Update main image
+        mainSliderImage.src = images[currentIndex].src;
+        mainSliderImage.alt = images[currentIndex].alt;
+        
+        // Update active thumbnail
+        thumbnailItems.forEach((thumb, i) => {
+            if (i === currentIndex) {
+                thumb.classList.add('active-thumbnail');
+                
+                // Manually scroll thumbnail into view within its container
+                const containerWidth = thumbnailsContainer.offsetWidth;
+                const thumbnailWidth = thumb.offsetWidth;
+                const thumbnailOffsetLeft = thumb.offsetLeft;
 
-        function updatePhotoCarousel() {
-            const translateX = -photoCurrentIndex * (100 / photoVisibleSlides);
-            photoCarousel.style.transform = `translateX(${translateX}%)`;
-        }
-
-        function nextPhoto() {
-            photoCurrentIndex = (photoCurrentIndex + 1) % (photoMaxIndex + 1);
-            updatePhotoCarousel();
-        }
-
-        function prevPhoto() {
-            photoCurrentIndex = (photoCurrentIndex - 1 + (photoMaxIndex + 1)) % (photoMaxIndex + 1);
-            updatePhotoCarousel();
-        }
-
-        function startAutoPlay() {
-            if (autoPlayInterval) return;
-            autoPlayInterval = setInterval(() => {
-                if (photoDirection === 1) nextPhoto();
-                else prevPhoto();
-            }, 3200);
-        }
-
-        function stopAutoPlay() {
-            clearInterval(autoPlayInterval);
-            autoPlayInterval = null;
-        }
-
-        // Event Listeners Boutons
-        if (photoNextBtn) {
-            photoNextBtn.addEventListener('click', () => {
-                photoDirection = 1;
-                stopAutoPlay();
-                nextPhoto();
-                startAutoPlay();
-            });
-        }
-
-        if (photoPrevBtn) {
-            photoPrevBtn.addEventListener('click', () => {
-                photoDirection = -1;
-                stopAutoPlay();
-                prevPhoto();
-                startAutoPlay();
-            });
-        }
-
-        // Pause au survol
-        photoCarousel.addEventListener('mouseenter', stopAutoPlay);
-        photoCarousel.addEventListener('mouseleave', startAutoPlay);
-
-        // Gestion Tactile
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        photoCarousel.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            stopAutoPlay();
-        }, { passive: true });
-
-        photoCarousel.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            const threshold = 50;
-            if (touchStartX - touchEndX > threshold) {
-                photoDirection = 1;
-                nextPhoto();
-            } else if (touchEndX - touchStartX > threshold) {
-                photoDirection = -1;
-                prevPhoto();
-            }
-            startAutoPlay();
-        }, { passive: true });
-
-        // Lancement initial
-        startAutoPlay();
-
-        // Redimensionnement
-        window.addEventListener('resize', function() {
-            const newSlidesCount = getVisibleSlides();
-            if (newSlidesCount !== photoVisibleSlides) {
-                photoVisibleSlides = newSlidesCount;
-                photoMaxIndex = photoTotalSlides - photoVisibleSlides;
-                photoCurrentIndex = Math.min(photoCurrentIndex, photoMaxIndex);
-                photoCurrentIndex = Math.max(photoCurrentIndex, 0);
-                updatePhotoCarousel();
+                // Calculate scroll position to center the thumbnail
+                const scrollPosition = thumbnailOffsetLeft - (containerWidth / 2) + (thumbnailWidth / 2);
+                
+                thumbnailsContainer.scrollTo({
+                    left: scrollPosition,
+                    behavior: 'smooth'
+                });
+            } else {
+                thumb.classList.remove('active-thumbnail');
             }
         });
     }
+
+    function goToSlide(index) {
+        if (index >= 0 && index < images.length) {
+            currentIndex = index;
+            updateSliderDisplay();
+            resetAutoPlay();
+        }
+    }
+
+    nextBtn.addEventListener('click', () => {
+        goToSlide((currentIndex + 1) % images.length);
+    });
+
+    prevBtn.addEventListener('click', () => {
+        goToSlide((currentIndex - 1 + images.length) % images.length);
+    });
+
+    // Thumbnail click handler
+    thumbnailItems.forEach((thumb, index) => {
+        thumb.addEventListener('click', () => goToSlide(index));
+    });
+
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+            goToSlide((currentIndex + 1) % images.length);
+        }, autoPlayDelay);
+    }
+
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+
+    function resetAutoPlay() {
+        stopAutoPlay();
+        startAutoPlay();
+    }
+
+    // Pause auto-play on hover over main image or thumbnails
+    mainSliderImage.addEventListener('mouseenter', stopAutoPlay);
+    mainSliderImage.addEventListener('mouseleave', startAutoPlay);
+    thumbnailsContainer.addEventListener('mouseenter', stopAutoPlay);
+    thumbnailsContainer.addEventListener('mouseleave', startAutoPlay);
+
+    // Swipe Tactile simple
+    let touchStart = 0;
+    mainSliderImage.addEventListener('touchstart', (e) => {
+        touchStart = e.touches[0].clientX;
+        stopAutoPlay();
+    }, {passive: true});
+    mainSliderImage.addEventListener('touchend', (e) => {
+        const touchEnd = e.changedTouches[0].clientX;
+        if (touchStart - touchEnd > 50) nextBtn.click(); // Swipe left
+        if (touchEnd - touchStart > 50) prevBtn.click(); // Swipe right
+        startAutoPlay();
+    }, {passive: true});
+
+    // Initialisation
+    updateSliderDisplay();
+    startAutoPlay();
+    
 });
