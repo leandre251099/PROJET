@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- SLIDER PRINCIPAL / MINIATURES ---
     const mainSliderImage = document.getElementById('main-slider-image');
+    const mainSliderBg = document.getElementById('main-slider-bg');
     const thumbnailsContainer = document.getElementById('thumbnails-container');
     const thumbnailItems = Array.from(thumbnailsContainer.querySelectorAll('.thumbnail-item'));
     const nextBtn = document.getElementById('nextSlide');
@@ -114,14 +115,17 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateSliderDisplay() {
         // Ajoute un effet de sortie (disparition et réduction)
         mainSliderImage.classList.add('opacity-0', 'scale-95');
+        if (mainSliderBg) mainSliderBg.classList.add('opacity-0');
 
         setTimeout(() => {
             // Change la source de l'image pendant qu'elle est invisible
             mainSliderImage.src = images[currentIndex].src;
             mainSliderImage.alt = images[currentIndex].alt;
+            if (mainSliderBg) mainSliderBg.src = images[currentIndex].src;
 
             // Une fois la source mise à jour, on réaffiche avec un zoom progressif
             mainSliderImage.classList.remove('opacity-0', 'scale-95');
+            if (mainSliderBg) mainSliderBg.classList.remove('opacity-0');
         }, 400); // Délai synchronisé avec la transition CSS
 
         // Update active thumbnail
