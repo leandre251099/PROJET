@@ -232,16 +232,18 @@ document.addEventListener('DOMContentLoaded', function() {
     thumbnailsContainer.addEventListener('mouseenter', stopAutoPlay);
     thumbnailsContainer.addEventListener('mouseleave', startAutoPlay);
 
-    // Swipe Tactile simple
+    // Swipe Tactile optimisé sur le conteneur
     let touchStart = 0;
-    mainSliderImage.addEventListener('touchstart', (e) => {
+    const sliderDisplay = mainSliderImage.closest('.main-image-display');
+    
+    sliderDisplay.addEventListener('touchstart', (e) => {
         touchStart = e.touches[0].clientX;
         stopAutoPlay();
     }, {passive: true});
-    mainSliderImage.addEventListener('touchend', (e) => {
+    sliderDisplay.addEventListener('touchend', (e) => {
         const touchEnd = e.changedTouches[0].clientX;
-        if (touchStart - touchEnd > 50) nextBtn.click(); // Swipe left
-        if (touchEnd - touchStart > 50) prevBtn.click(); // Swipe right
+        if (touchStart - touchEnd > 40) nextBtn.click(); // Swipe left (plus sensible)
+        if (touchEnd - touchStart > 40) prevBtn.click(); // Swipe right
         startAutoPlay();
     }, {passive: true});
 
