@@ -12,11 +12,15 @@ body {
 
 /* Hero Background */
 .hero-bg { /* Utilisation d'un dégradé de bleus/gris foncés pour un look moderne et professionnel */
-    background: linear-gradient(-50deg, #0F2027, #203A43, #2C5364);
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
     background-size: 400% 400%;
     animation: gradient-animation 20s ease infinite;
     background-attachment: fixed;
     box-shadow: inset 0 -60px 60px -60px rgba(0, 0, 0, 0.5);
+}
+
+.dark .hero-bg {
+    background: linear-gradient(-50deg, #0F2027, #203A43, #2C5364);
 }
 
 @keyframes gradient-animation {
@@ -36,7 +40,7 @@ body {
     position: absolute;
     width: 0;
     height: 2px;
-    bottom: -4px;
+    bottom: 2px;
     left: 0;
     background-color: #10b981;
     transition: width 0.4s ease;
@@ -177,5 +181,9 @@ body {
 
 /* Contact */
 #contact { /* Surcharge de la couleur de fond pour correspondre au nouveau dégradé du hero */
-    background-color: #203A43;
+    background-color: #f8fafc; /* Slate 50 pour mode clair */
+}
+
+.dark #contact {
+    background-color: #022c22; /* Emerald 950 pour un mode sombre plus profond */
 }

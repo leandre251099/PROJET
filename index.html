@@ -9,6 +9,11 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -20,38 +25,46 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-slate-950 text-slate-200">
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
 
     <!-- Navbar -->
-    <nav class="bg-slate-900/90 backdrop-blur-md shadow-2xl sticky top-0 z-50 border-b border-slate-800">
+    <nav class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg dark:shadow-2xl sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4 flex justify-between items-center">
             <div class="flex items-center gap-1 sm:gap-2 md:gap-3">
                 <img src="/media/IMG_1253.PNG" alt="Logo Eco-Clean Services" class="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain">
                 <div>
-                    <h1 class="text-xs sm:text-sm md:text-lg lg:text-2xl font-bold text-emerald-400 leading-tight">Eco-Clean<br class="sm:hidden"><span class="hidden sm:inline"> </span>Services</h1>
+                    <h1 class="text-xs sm:text-sm md:text-lg lg:text-2xl font-bold text-emerald-600 dark:text-emerald-400 leading-tight">Eco-Clean<br class="sm:hidden"><span class="hidden sm:inline"> </span>Services</h1>
                 </div>
             </div>
             
-            <div class="hidden lg:flex items-center gap-8 text-lg text-slate-300">
-                <a href="#accueil" class="nav-link font-medium hover:text-emerald-400">Accueil</a>
-                <a href="#services" class="nav-link font-medium hover:text-emerald-400">Services</a>
-                <a href="#pourquoi" class="nav-link font-medium hover:text-emerald-400">Pourquoi nous ?</a>
-                <a href="#temoignages" class="nav-link font-medium hover:text-emerald-400">Avis</a>
-                <a href="#contact" class="nav-link font-medium hover:text-emerald-400">Contact</a>
+            <div class="hidden lg:flex items-center gap-8 text-lg text-slate-700 dark:text-slate-300 transition-colors duration-300">
+                <a href="#accueil" class="nav-link font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300">Accueil</a>
+                <a href="#services" class="nav-link font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300">Services</a>
+                <a href="#pourquoi" class="nav-link font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300">Pourquoi nous ?</a>
+                <a href="#temoignages" class="nav-link font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300">Avis</a>
+                <a href="#contact" class="nav-link font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300">Contact</a>
             </div>
             
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="lg:hidden text-slate-100 text-lg p-1.5">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="flex items-center gap-2 sm:gap-4">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition-all">
+                    <i id="theme-toggle-dark-icon" class="hidden fas fa-moon"></i>
+                    <i id="theme-toggle-light-icon" class="hidden fas fa-sun"></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-slate-800 dark:text-slate-100 text-lg p-1.5">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
             
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-slate-900 shadow-lg py-2 sm:py-3 px-2 sm:px-4 border-b border-slate-800">
-                <a href="#accueil" class="block py-1.5 sm:py-2 text-slate-200 font-medium text-sm sm:text-base">Accueil</a>
-                <a href="#services" class="block py-1.5 sm:py-2 text-slate-200 font-medium text-sm sm:text-base">Services</a>
-                <a href="#pourquoi" class="block py-1.5 sm:py-2 text-slate-200 font-medium text-sm sm:text-base">Pourquoi nous ?</a>
-                <a href="#temoignages" class="block py-1.5 sm:py-2 text-slate-200 font-medium text-sm sm:text-base">Avis</a>
-                <a href="#contact" class="block py-1.5 sm:py-2 text-slate-200 font-medium text-sm sm:text-base">Contact</a>
+            <!-- Mobile Menu (plus grand) -->
+            <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-slate-900 shadow-xl py-3 sm:py-4 px-2 sm:px-4 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+                <a href="#accueil" class="block py-2 sm:py-3 text-slate-800 dark:text-slate-200 font-medium text-sm sm:text-base">Accueil</a>
+                <a href="#services" class="block py-2 sm:py-3 text-slate-800 dark:text-slate-200 font-medium text-sm sm:text-base">Services</a>
+                <a href="#pourquoi" class="block py-2 sm:py-3 text-slate-800 dark:text-slate-200 font-medium text-sm sm:text-base">Pourquoi nous ?</a>
+                <a href="#temoignages" class="block py-2 sm:py-3 text-slate-800 dark:text-slate-200 font-medium text-sm sm:text-base">Avis</a>
+                <a href="#contact" class="block py-2 sm:py-3 text-slate-800 dark:text-slate-200 font-medium text-sm sm:text-base">Contact</a>
             </div>
             
         </div>
@@ -80,68 +93,68 @@
     </section>
 
     <!-- Services -->
-    <section id="services" class="py-8 sm:py-12 md:py-20 lg:py-24 bg-slate-900">
+    <section id="services" class="py-8 sm:py-12 md:py-20 lg:py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
             <div class="text-center mb-8 sm:mb-12 md:mb-16" data-aos="fade-up">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-white">Nos Services</h2>
-                <p class="text-slate-400 max-w-xl mx-auto text-xs sm:text-sm md:text-base">Des solutions professionnelles et durables pour protéger vos espaces</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-slate-900 dark:text-white">Nos Services</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-xl mx-auto text-xs sm:text-sm md:text-base">Des solutions professionnelles et durables pour protéger vos espaces</p>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-                <div class="service-card bg-slate-800 border border-slate-700 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-sm dark:shadow-none" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 bg-red-100 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 md:mb-5 lg:mb-6 pest-icon">🐀</div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-white">Dératisation</h3>
-                    <p class="text-slate-300 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Élimination complète des rats, souris et rongeurs avec méthodes sécurisées.</p>
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-slate-900 dark:text-white">Dératisation</h3>
+                    <p class="text-slate-600 dark:text-slate-300 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Élimination complète des rats, souris et rongeurs avec méthodes sécurisées.</p>
                     <ul class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
                         <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> Traitement intérieur & extérieur</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> Suivi et prévention</li>
                     </ul>
                 </div>
 
-                <div class="service-card bg-slate-800 border border-slate-700 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-sm dark:shadow-none" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 bg-amber-100 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 md:mb-5 lg:mb-6 pest-icon">🪳</div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-white">Désinsectisation</h3>
-                    <p class="text-slate-300 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Cafards, punaises de lit, termites, fourmis, moustiques, serpents...</p>
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-slate-900 dark:text-white">Désinsectisation</h3>
+                    <p class="text-slate-600 dark:text-slate-300 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Cafards, punaises de lit, termites, fourmis, moustiques, serpents...</p>
                     <ul class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
                         <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> Traitement thermique punaises</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> Répulsif serpents</li>
                     </ul>
                 </div>
 
-                <div class="service-card bg-slate-800 border border-slate-700 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-sm dark:shadow-none" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 bg-blue-100 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 md:mb-5 lg:mb-6 pest-icon">🦠</div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-white">Assainissement & Désinfection</h3>
-                    <p class="text-slate-300 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Désinfection complète des locaux et assainissement environnemental.</p>
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-slate-900 dark:text-white">Assainissement & Désinfection</h3>
+                    <p class="text-slate-600 dark:text-slate-300 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Désinfection complète des locaux et assainissement environnemental.</p>
                     <ul class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
                         <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> Fumigation</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> Traitement écologique</li>
                     </ul>
                 </div>
 
-                <div class="service-card bg-slate-800 border border-slate-700 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-sm dark:shadow-none" data-aos="fade-up" data-aos-delay="400">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 bg-orange-100 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 md:mb-5 lg:mb-6 pest-icon">🏢</div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-white">Services BTP</h3>
-                    <p class="text-slate-300 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Traitement anti-termite pour constructions neuves et rénovation.</p>
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-slate-900 dark:text-white">Services BTP</h3>
+                    <p class="text-slate-600 dark:text-slate-300 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Traitement anti-termite pour constructions neuves et rénovation.</p>
                     <ul class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
                         <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> Prévention termites</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> Certification BTP</li>
                     </ul>
                 </div>
 
-                <div class="service-card bg-slate-800 border border-slate-700 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8" data-aos="fade-up" data-aos-delay="500">
+                <div class="service-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-sm dark:shadow-none" data-aos="fade-up" data-aos-delay="500">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 bg-emerald-100 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 md:mb-5 lg:mb-6 pest-icon">🧽</div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-white">Nettoyage & Entretien</h3>
-                    <p class="text-slate-300 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Nettoyage professionnel des bureaux, locaux, maisons et espaces.</p>
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-slate-900 dark:text-white">Nettoyage & Entretien</h3>
+                    <p class="text-slate-600 dark:text-slate-300 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Nettoyage professionnel des bureaux, locaux, maisons et espaces.</p>
                     <ul class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
                         <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> Nettoyage post-sinistre</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> Décontamination</li>
                     </ul>
                 </div>
 
-                <div class="service-card bg-slate-800 border border-slate-700 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8" data-aos="fade-up" data-aos-delay="600">
+                <div class="service-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-sm dark:shadow-none" data-aos="fade-up" data-aos-delay="600">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 bg-green-100 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 md:mb-5 lg:mb-6 pest-icon">🌿</div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-white">Aménagement espaces verts</h3>
-                    <p class="text-slate-300 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Création et entretien d'espaces verts sains et sécurisés.</p>
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-slate-900 dark:text-white">Aménagement espaces verts</h3>
+                    <p class="text-slate-600 dark:text-slate-300 mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-xs sm:text-sm md:text-base">Création et entretien d'espaces verts sains et sécurisés.</p>
                     <ul class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
                         <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> Prévention nuisibles</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500"></i> Solutions écologiques</li>
@@ -152,37 +165,37 @@
     </section>
 
     <!-- Pourquoi nous -->
-    <section id="pourquoi" class="py-8 sm:py-12 md:py-20 lg:py-24 bg-slate-900 text-white">
+    <section id="pourquoi" class="py-8 sm:py-12 md:py-20 lg:py-24 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16 items-center">
                 <div data-aos="fade-right">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 md:mb-8">Pourquoi choisir Eco-Clean Services ?</h2>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 md:mb-8 text-slate-900 dark:text-white">Pourquoi choisir Eco-Clean Services ?</h2>
                     <div class="space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10">
                         <div class="flex gap-3 sm:gap-4 md:gap-6">
                             <div class="text-4xl sm:text-5xl text-emerald-500">⚡</div>
                             <div>
                                 <h4 class="font-semibold text-lg sm:text-xl mb-2">Intervention ultra-rapide</h4>
-                                <p class="text-slate-400 text-sm sm:text-base">Dans les 24h à Libreville et environs.</p>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">Dans les 24h à Libreville et environs.</p>
                             </div>
                         </div>
                         <div class="flex gap-4 sm:gap-6">
                             <div class="text-4xl sm:text-5xl text-emerald-500">🛡️</div>
                             <div>
                                 <h4 class="font-semibold text-lg sm:text-xl mb-2">Produits homologués</h4>
-                                <p class="text-slate-400 text-sm sm:text-base">Sécurisés pour les humains et animaux domestiques.</p>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">Sécurisés pour les humains et animaux domestiques.</p>
                             </div>
                         </div>
                         <div class="flex gap-4 sm:gap-6">
                             <div class="text-4xl sm:text-5xl text-emerald-500">♻️</div>
                             <div>
                                 <h4 class="font-semibold text-lg sm:text-xl mb-2">Solutions écologiques</h4>
-                                <p class="text-slate-400 text-sm sm:text-base">Méthodes modernes et respectueuses de l’environnement.</p>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">Méthodes modernes et respectueuses de l’environnement.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="bg-slate-800 rounded-3xl p-4 sm:p-6 md:p-8 lg:p-10" data-aos="fade-left border border-slate-700">
+                <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-4 sm:p-6 md:p-8 lg:p-10 shadow-sm dark:shadow-none" data-aos="fade-left">
                     <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 sm:mb-6 md:mb-8">Nos engagements</h3>
                     <ul class="space-y-3 sm:space-y-4 md:space-y-6 text-xs sm:text-sm md:text-base lg:text-lg">
                         <li class="flex items-start gap-3 sm:gap-4"><span class="text-emerald-500 text-lg sm:text-xl md:text-2xl flex-shrink-0">✔</span> Devis gratuit et sans engagement</li>
@@ -196,11 +209,11 @@
     </section>
 
     <!-- Galerie Photos -->
-    <section class="py-6 sm:py-8 bg-slate-900 overflow-x-hidden border-t border-slate-800">
+    <section class="py-6 sm:py-8 bg-slate-50 dark:bg-slate-900 overflow-x-hidden border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
             <div class="text-center mb-4 sm:mb-6" data-aos="fade-up">
-                <h2 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-white">Nos Réalisations</h2>
-                <p class="text-slate-400 text-sm">Découvrez nos interventions sur le terrain</p>
+                <h2 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-slate-900 dark:text-white">Nos Réalisations</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm">Découvrez nos interventions sur le terrain</p>
             </div>
 
             <div class="slider-container max-w-4xl mx-auto" id="main-slider-container">
@@ -232,76 +245,76 @@
     </section>
 
     <!-- Témoignages -->
-    <section id="temoignages" class="py-8 sm:py-12 md:py-20 lg:py-24 bg-slate-950">
+    <section id="temoignages" class="py-8 sm:py-12 md:py-20 lg:py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 md:mb-16 text-white" data-aos="fade-up">Ce que disent nos clients</h2>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 md:mb-16 text-slate-900 dark:text-white" data-aos="fade-up">Ce que disent nos clients</h2>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-                <div class="bg-slate-900 p-6 sm:p-7 md:p-8 rounded-3xl border border-slate-800" data-aos="fade-up">
+                <div class="bg-white dark:bg-slate-900 p-6 sm:p-7 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800" data-aos="fade-up">
                     <div class="flex text-yellow-400 mb-4 sm:mb-6 text-lg sm:text-xl">★★★★★</div>
-                    <p class="italic mb-4 sm:mb-6 text-sm sm:text-base text-slate-300">"Intervention très rapide et efficace. Plus aucun cafard chez moi après leur passage."</p>
-                    <div class="font-semibold text-sm sm:text-base">Marie K. - Libreville</div>
+                    <p class="italic mb-4 sm:mb-6 text-sm sm:text-base text-slate-600 dark:text-slate-300">"Intervention très rapide et efficace. Plus aucun cafard chez moi après leur passage."</p>
+                    <div class="font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Marie K. - Libreville</div>
                 </div>
-                <div class="bg-slate-900 p-6 sm:p-7 md:p-8 rounded-3xl border border-slate-800" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white dark:bg-slate-900 p-6 sm:p-7 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex text-yellow-400 mb-4 sm:mb-6 text-lg sm:text-xl">★★★★☆</div>
-                    <p class="italic mb-4 sm:mb-6 text-sm sm:text-base text-slate-300">"Traitement professionnel pour nos bureaux. L'équipe est sérieuse et discrète."</p>
-                    <div class="font-semibold text-sm sm:text-base">Entreprise ABC - Owendo</div>
+                    <p class="italic mb-4 sm:mb-6 text-sm sm:text-base text-slate-600 dark:text-slate-300">"Traitement professionnel pour nos bureaux. L'équipe est sérieuse et discrète."</p>
+                    <div class="font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Entreprise ABC - Owendo</div>
                 </div>
-                <div class="bg-slate-900 p-6 sm:p-7 md:p-8 rounded-3xl border border-slate-800" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white dark:bg-slate-900 p-6 sm:p-7 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex text-yellow-400 mb-4 sm:mb-6 text-lg sm:text-xl">★★★★★</div>
-                    <p class="italic mb-4 sm:mb-6 text-sm sm:text-base text-slate-300">"Ils ont résolu notre problème de termites en une seule intervention."</p>
-                    <div class="font-semibold text-sm sm:text-base">Sophie E. - Akanda</div>
+                    <p class="italic mb-4 sm:mb-6 text-sm sm:text-base text-slate-600 dark:text-slate-300">"Ils ont résolu notre problème de termites en une seule intervention."</p>
+                    <div class="font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Sophie E. - Akanda</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="bg-emerald-900 text-white py-12 sm:py-16 md:py-24">
+    <section id="contact" class="py-12 sm:py-16 md:py-24 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
                 <div data-aos="fade-right">
-                    <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">Prêt à retrouver un environnement sain ?</h2>
-                    <p class="text-lg sm:text-xl mb-6 sm:mb-10">Contactez-nous dès aujourd’hui pour un diagnostic gratuit et un devis personnalisé.</p>
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-slate-800 dark:text-white">Prêt à retrouver un environnement sain ?</h2>
+                    <p class="text-lg sm:text-xl mb-6 sm:mb-10 text-slate-600 dark:text-slate-300">Contactez-nous dès aujourd’hui pour un diagnostic gratuit et un devis personnalisé.</p>
                     
                     <div class="space-y-6 sm:space-y-8">
                         <div class="flex items-center gap-4 sm:gap-6">
-                            <i class="fas fa-phone text-3xl sm:text-4xl"></i>
+                            <i class="fas fa-phone text-3xl sm:text-4xl text-emerald-600 dark:text-emerald-400"></i>
                             <div>
-                                <p class="font-semibold text-sm sm:text-base">Appelez-nous</p>
-                                <a href="tel:0778899994" class="text-xl sm:text-2xl">07 78 89 99 94</a>
+                                <p class="font-semibold text-sm sm:text-base text-slate-500 dark:text-slate-400">Appelez-nous</p>
+                                <a href="tel:0778899994" class="text-xl sm:text-2xl text-slate-900 dark:text-white">07 78 89 99 94</a>
                             </div>
                         </div>
                         <div class="flex items-center gap-4 sm:gap-6">
-                            <i class="fas fa-map-marker-alt text-3xl sm:text-4xl"></i>
+                            <i class="fas fa-map-marker-alt text-3xl sm:text-4xl text-emerald-600 dark:text-emerald-400"></i>
                             <div>
-                                <p class="font-semibold text-sm sm:text-base">Libreville - Gabon</p>
-                                <p class="text-sm sm:text-base">Intervention sur tout le territoire</p>
+                                <p class="font-semibold text-sm sm:text-base text-slate-500 dark:text-slate-400">Libreville - Gabon</p>
+                                <p class="text-sm sm:text-base text-slate-900 dark:text-white">Intervention sur tout le territoire</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4 sm:gap-6">
-                            <i class="fas fa-clock text-3xl sm:text-4xl"></i>
+                            <i class="fas fa-clock text-3xl sm:text-4xl text-emerald-600 dark:text-emerald-400"></i>
                             <div>
-                                <p class="font-semibold text-sm sm:text-base">Disponibilité</p>
-                                <p class="text-sm sm:text-base">7 jours sur 7 • Urgence 24h/24</p>
+                                <p class="font-semibold text-sm sm:text-base text-slate-500 dark:text-slate-400">Disponibilité</p>
+                                <p class="text-sm sm:text-base text-slate-900 dark:text-white">7 jours sur 7 • Urgence 24h/24</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <form id="contactForm" class="bg-slate-800 text-white p-4 sm:p-5 md:p-7 lg:p-10 rounded-3xl shadow-2xl border border-slate-700" data-aos="fade-left">
+                <form id="contactForm" class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white p-4 sm:p-5 md:p-7 lg:p-10 rounded-3xl shadow-xl dark:shadow-none border border-slate-200 dark:border-slate-800" data-aos="fade-left">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5">
-                        <input type="text" id="nom" placeholder="Votre nom" class="border border-slate-700 bg-slate-900 p-2.5 sm:p-3 md:p-4 rounded-2xl focus:outline-none focus:border-emerald-500 text-xs sm:text-sm md:text-base text-white">
-                        <input type="tel" id="telephone" placeholder="Téléphone" class="border border-slate-700 bg-slate-900 p-2.5 sm:p-3 md:p-4 rounded-2xl focus:outline-none focus:border-emerald-500 text-xs sm:text-sm md:text-base text-white">
+                        <input type="text" id="nom" placeholder="Votre nom" class="border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-2.5 sm:p-3 md:p-4 rounded-2xl focus:outline-none focus:border-emerald-500 text-xs sm:text-sm md:text-base text-slate-900 dark:text-white">
+                        <input type="tel" id="telephone" placeholder="Téléphone" class="border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-2.5 sm:p-3 md:p-4 rounded-2xl focus:outline-none focus:border-emerald-500 text-xs sm:text-sm md:text-base text-slate-900 dark:text-white">
                     </div>
-                    <input type="email" id="email" placeholder="Votre email" class="mt-3 sm:mt-4 md:mt-5 w-full border border-slate-700 bg-slate-900 p-2.5 sm:p-3 md:p-4 rounded-2xl focus:outline-none focus:border-emerald-500 text-xs sm:text-sm md:text-base text-white">
-                    <textarea id="message" placeholder="Décrivez votre problème..." rows="4" class="mt-3 sm:mt-4 md:mt-5 w-full border border-slate-700 bg-slate-900 p-2.5 sm:p-3 md:p-4 rounded-2xl focus:outline-none focus:border-emerald-500 text-xs sm:text-sm md:text-base text-white"></textarea>
+                    <input type="email" id="email" placeholder="Votre email" class="mt-3 sm:mt-4 md:mt-5 w-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-2.5 sm:p-3 md:p-4 rounded-2xl focus:outline-none focus:border-emerald-500 text-xs sm:text-sm md:text-base text-slate-900 dark:text-white">
+                    <textarea id="message" placeholder="Décrivez votre problème..." rows="4" class="mt-3 sm:mt-4 md:mt-5 w-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-2.5 sm:p-3 md:p-4 rounded-2xl focus:outline-none focus:border-emerald-500 text-xs sm:text-sm md:text-base text-slate-900 dark:text-white"></textarea>
                     
                     <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 sm:mt-6 md:mt-8">
-                        <button type="button" id="whatsappBtn" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 sm:py-3 md:py-4 lg:py-5 rounded-2xl font-semibold text-xs sm:text-sm md:text-base lg:text-lg transition-all text-center flex items-center justify-center gap-1.5 sm:gap-2 shadow-lg shadow-emerald-200">
+                        <button type="button" id="whatsappBtn" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 sm:py-3 md:py-4 lg:py-5 rounded-2xl font-semibold text-xs sm:text-sm md:text-base lg:text-lg transition-all text-center flex items-center justify-center gap-1.5 sm:gap-2 shadow-lg shadow-emerald-500/20">
                             <i class="fab fa-whatsapp"></i> <span class="hidden sm:inline">WhatsApp</span>
                         </button>
-                        <button type="button" id="emailBtn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2.5 sm:py-3 md:py-4 lg:py-5 rounded-2xl font-semibold text-xs sm:text-sm md:text-base lg:text-lg transition-all text-center flex items-center justify-center gap-1.5 sm:gap-2 shadow-lg shadow-blue-200">
+                        <button type="button" id="emailBtn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2.5 sm:py-3 md:py-4 lg:py-5 rounded-2xl font-semibold text-xs sm:text-sm md:text-base lg:text-lg transition-all text-center flex items-center justify-center gap-1.5 sm:gap-2 shadow-lg shadow-blue-500/20">
                             <i class="fas fa-envelope"></i> <span class="hidden sm:inline">Email</span>
                         </button>
                     </div>
@@ -311,13 +324,13 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 text-slate-400 py-6 sm:py-8 md:py-10">
+    <footer class="bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-400 py-6 sm:py-8 md:py-10 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
             <div class="grid gap-6 lg:gap-8">
                 <div class="grid lg:grid-cols-[1.5fr_1fr] gap-6 items-center">
                     <div class="text-center lg:text-left">
-                        <h3 class="text-base sm:text-lg md:text-xl font-semibold text-white mb-3">Suivez-nous sur les réseaux</h3>
-                        <div class="flex flex-wrap justify-center lg:justify-start items-center gap-3 text-white text-lg">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold text-slate-900 dark:text-white mb-3">Suivez-nous sur les réseaux</h3>
+                        <div class="flex flex-wrap justify-center lg:justify-start items-center gap-3 text-emerald-600 dark:text-white text-lg">
                             <a href="#" aria-label="Facebook" class="footer-social-btn"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" aria-label="Instagram" class="footer-social-btn"><i class="fab fa-instagram"></i></a>
                             <a href="https://wa.me/077959626" aria-label="WhatsApp" class="footer-social-btn"><i class="fab fa-whatsapp"></i></a>
@@ -326,22 +339,22 @@
                     </div>
 
                     <div class="text-center lg:text-right">
-                        <h3 class="text-base sm:text-lg md:text-xl font-semibold text-white mb-3">Partenaires et agrégats</h3>
-                        <p class="text-slate-400 text-sm mb-4 lg:mb-5">Ministère de la Santé et de l'AGASA, gages de confiance et conformité.</p>
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold text-slate-900 dark:text-white mb-3">Partenaires et agrégats</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 lg:mb-5">Ministère de la Santé et de l'AGASA, gages de confiance et conformité.</p>
                         <div class="flex flex-col sm:flex-row sm:justify-end items-stretch gap-4">
-                            <div class="footer-logo bg-slate-900 border border-slate-800 rounded-3xl px-4 py-3 flex items-center gap-3 w-full sm:w-64">
+                            <div class="footer-logo bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl px-4 py-3 flex items-center gap-3 w-full sm:w-64">
                                 <img src="media/Ministère de la santé.webp" alt="Logo Ministère de la Santé" class="footer-logo-icon w-11 h-11 rounded-2xl object-cover">
                                 <div class="text-left">
                                     <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500">Ministère de la Santé</p>
-                                    <p class="text-sm text-white font-semibold">Agrégat officiel</p>
+                                    <p class="text-sm text-slate-900 dark:text-white font-semibold">Agrégat officiel</p>
                                 </div>
                             </div>
 
-                            <div class="footer-logo bg-slate-900 border border-slate-800 rounded-3xl px-4 py-3 flex items-center gap-3 w-full sm:w-64">
+                            <div class="footer-logo bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl px-4 py-3 flex items-center gap-3 w-full sm:w-64">
                                 <img src="media/agasa.jpg" alt="Logo AGASA" class="footer-logo-icon w-11 h-11 rounded-2xl object-cover">
                                 <div class="text-left">
                                     <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500">AGASA</p>
-                                    <p class="text-sm text-white font-semibold">Agrégat sanitaire</p>
+                                    <p class="text-sm text-slate-900 dark:text-white font-semibold">Agrégat sanitaire</p>
                                 </div>
                             </div>
                         </div>
