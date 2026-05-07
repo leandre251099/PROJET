@@ -64,13 +64,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbarLinksDesktop = document.getElementById('navbar-links-desktop');
 
     const handleNavbarScroll = () => {
-        const heroHeight = heroSection.offsetHeight;
-        const isMobile = window.innerWidth < 1024; // Détecte si l'écran est mobile (breakpoint lg de Tailwind)
-
-        navbar.classList.remove('hidden');
+        // Utilisation de pageYOffset pour une meilleure compatibilité mobile (iOS/Android)
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const heroHeight = heroSection ? heroSection.offsetHeight : 0;
+        // Détection plus fiable du mode mobile via matchMedia (lg = 1024px)
+        const isMobile = window.matchMedia("(max-width: 1023px)").matches;
 
         if (isMobile) {
-            if (window.scrollY > (heroHeight - 100)) {
+            if (scrollTop > (heroHeight - 100)) {
                 // Effet de disparition fluide : glissement vers le haut et fondu
                 navbar.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
             } else {
@@ -78,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } else {
             navbar.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
-            if (window.scrollY > (heroHeight - 100)) {
+            if (scrollTop > (heroHeight - 100)) {
                 // État Opaque (Sortie du Hero)
                 navbar.classList.add('bg-white/95', 'dark:bg-slate-900/95', 'backdrop-blur-md', 'shadow-md', 'scrolled');
                 navbar.classList.remove('bg-black/10', 'backdrop-blur-[2px]', 'shadow-lg');
