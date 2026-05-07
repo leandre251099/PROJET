@@ -283,3 +283,7 @@ body {
 .animate-progress-fill {
     animation: progress-fill 3s ease-in-out forwards;
 }
+
+.star-active {
+    color: #fbbf24 !important; /* Yellow-400 */
+}

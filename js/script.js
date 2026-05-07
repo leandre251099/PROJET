@@ -424,5 +424,83 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialisation
     updateSliderDisplay();
     startAutoPlay();
+
+    // --- GESTION DES AVIS ET ÉTOILES ---
+    const starContainer = document.getElementById('star-rating');
+    const stars = starContainer ? starContainer.querySelectorAll('i') : [];
+    const reviewForm = document.getElementById('review-form');
+    const reviewsGrid = document.getElementById('reviews-grid');
+    let currentRating = 0;
+
+    // Gestion de l'interactivité des étoiles
+    stars.forEach(star => {
+        star.addEventListener('mouseover', function() {
+            highlightStars(this.dataset.value);
+        });
+
+        star.addEventListener('mouseout', function() {
+            highlightStars(currentRating);
+        });
+
+        star.addEventListener('click', function() {
+            currentRating = this.dataset.value;
+            highlightStars(currentRating);
+        });
+    });
+
+    function highlightStars(rating) {
+        stars.forEach(star => {
+            if (parseInt(star.dataset.value) <= parseInt(rating)) {
+                star.classList.add('star-active');
+            } else {
+                star.classList.remove('star-active');
+            }
+        });
+    }
+
+    // Fonction pour ajouter un avis au DOM
+    function addReviewToDOM(name, comment, rating, isNew = false) {
+        const starsHtml = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+        const reviewHtml = `
+            <div class="bg-white dark:bg-slate-900 p-6 sm:p-7 md:p-8 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm" ${isNew ? 'data-aos="zoom-in"' : ''}>
+                <div class="flex text-yellow-400 mb-4 text-lg font-bold tracking-widest">${starsHtml}</div>
+                <p class="italic mb-4 text-sm sm:text-base text-slate-500 dark:text-slate-300">"${comment}"</p>
+                <div class="font-semibold text-sm sm:text-base text-slate-800 dark:text-white">${name}</div>
+            </div>
+        `;
+        reviewsGrid.insertAdjacentHTML('beforeend', reviewHtml);
+        if (isNew && typeof AOS !== 'undefined') AOS.refresh();
+    }
+
+    // Charger les avis sauvegardés au chargement
+    const savedReviews = JSON.parse(localStorage.getItem('eco-clean-reviews') || '[]');
+    savedReviews.forEach(r => addReviewToDOM(r.name, r.comment, r.rating));
+
+    // Soumission du formulaire
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (currentRating === 0) {
+                alert("S'il vous plaît, sélectionnez une note en étoiles.");
+                return;
+            }
+
+            const name = document.getElementById('review-name').value;
+            const comment = document.getElementById('review-comment').value;
+
+            // Sauvegarde locale
+            const newReview = { name, comment, rating: parseInt(currentRating) };
+            const allReviews = JSON.parse(localStorage.getItem('eco-clean-reviews') || '[]');
+            allReviews.push(newReview);
+            localStorage.setItem('eco-clean-reviews', JSON.stringify(allReviews));
+
+            // Mise à jour interface
+            addReviewToDOM(name, comment, currentRating, true);
+            reviewForm.reset();
+            currentRating = 0;
+            highlightStars(0);
+        });
+    }
     
 });
