@@ -42,8 +42,8 @@ body {
     height: 2px;
     bottom: -2px;
     left: 0;
-    background-color: white;
-    transition: width 0.4s ease;
+    background-color: currentColor;
+    transition: width 0.4s ease, background-color 0.3s ease;
 }
 
 .nav-link:hover:after {
@@ -193,9 +193,5 @@ body {
 }
 
 .dark #contact {
-
-.scrolled .nav-link:after {
-    background-color: #10b981; /* Emerald 500 pour que le trait soit visible sur fond blanc */
-}
     background-color: #022c22; /* Emerald 950 pour un mode sombre plus profond */
 }

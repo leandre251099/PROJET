@@ -67,18 +67,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const heroHeight = heroSection.offsetHeight;
         const isMobile = window.innerWidth < 1024; // Détecte si l'écran est mobile (breakpoint lg de Tailwind)
 
-        navbar.classList.remove('hidden'); // S'assure que la navbar n'est pas cachée par défaut
+        navbar.classList.remove('hidden');
 
         if (isMobile) {
             if (window.scrollY > (heroHeight - 100)) {
-                // Cacher la navbar sur mobile quand on sort du Hero
-                navbar.classList.add('hidden');
+                // Effet de disparition fluide : glissement vers le haut et fondu
+                navbar.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
             } else {
-                // Afficher la navbar sur mobile quand on est dans le Hero
-                navbar.classList.remove('hidden');
+                navbar.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
             }
         } else {
-            // Logique pour les écrans desktop (ou mobile quand la navbar est visible dans le Hero)
+            navbar.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
             if (window.scrollY > (heroHeight - 100)) {
                 // État Opaque (Sortie du Hero)
                 navbar.classList.add('bg-white/95', 'dark:bg-slate-900/95', 'backdrop-blur-md', 'shadow-md', 'scrolled');
