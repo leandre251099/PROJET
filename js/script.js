@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!data) return;
             
             const text = `Bonjour, je m'appelle ${data.nom}. Tél: ${data.telephone}. Email: ${data.email}. Message: ${data.message}. Je souhaite un devis.`;
-            const url = `https://wa.me/074227737?text=${encodeURIComponent(text)}`;
+            const url = `https://wa.me/04227737?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         });
     }
