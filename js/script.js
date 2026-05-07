@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!data) return;
             
             const text = `Bonjour, je m'appelle ${data.nom}. Tél: ${data.telephone}. Email: ${data.email}. Message: ${data.message}. Je souhaite un devis.`;
-            const url = `https://wa.me/+24174227737?text=${encodeURIComponent(text)}`;
+            const url = `https://wa.me/24174227737?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         });
     }
@@ -252,19 +252,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainSliderImage = document.getElementById('main-slider-image');
     const mainSliderBg = document.getElementById('main-slider-bg');
     const thumbnailsContainer = document.getElementById('thumbnails-container');
-    const thumbnailItems = Array.from(thumbnailsContainer.querySelectorAll('.thumbnail-item'));
     const nextBtn = document.getElementById('nextSlide');
     const prevBtn = document.getElementById('prevSlide');
     
+    // --- LISTE DES IMAGES (Ajoutez vos nouvelles photos ici) ---
+    const images = [
+        { src: 'media/bb.png', alt: 'Présentation des services Eco-Clean' },
+        { src: 'media/c738b642-e4ce-4f8f-9fcd-7868498a8800.jpg', alt: 'Expertise en désinfection des locaux' },
+        { src: 'media/58aac069-733a-4760-8c71-b8fdad9aa91e.jpg', alt: 'Traitement de dératisation en entrepôt' },
+        { src: 'media/5af448d4-7b6f-41ff-8afc-9e2b75b2af73.jpg', alt: 'Entretien et hygiène des surfaces' },
+        { src: 'media/e7c8256e-8895-4a67-8a27-2ffa918e155a.jpg', alt: 'Traitement phytosanitaire des espaces verts' },
+        { src: 'media/agasa.jpg', alt: 'Certificat de conformité sanitaire AGASA' },
+        { src: 'media/Ministère de la santé.webp', alt: 'Agrément officiel du Ministère de la Santé' },
+        { src: 'media/IMG_1253.PNG', alt: 'Eco-Clean Services - Votre partenaire hygiène' },
+        // Ajoutez vos autres photos ci-dessous sur le même modèle :
+        // { src: 'media/nom-de-votre-photo.jpg', alt: 'Description de la photo' },
+        // { src: 'media/autre-intervention.png', alt: 'Une autre intervention' }
+    ];
+
+    // Génération automatique des miniatures
+    thumbnailsContainer.innerHTML = images.map((img, index) => `
+        <img src="${img.src}" alt="${img.alt}" class="thumbnail-item w-20 h-16 flex-shrink-0 object-cover rounded-md cursor-pointer border-2 border-transparent transition-all duration-200 ease-in-out">
+    `).join('');
+
+    const thumbnailItems = Array.from(thumbnailsContainer.querySelectorAll('.thumbnail-item'));
     let currentIndex = 0;
     let autoPlayInterval;
     const autoPlayDelay = 8000; // 8 secondes
-
-    // Array of image sources and their alt texts
-    const images = thumbnailItems.map(img => ({
-        src: img.src,
-        alt: img.alt
-    }));
 
     function updateSliderDisplay() {
         // Ajoute un effet de sortie (disparition et réduction)
