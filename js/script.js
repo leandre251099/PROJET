@@ -257,17 +257,32 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // --- LISTE DES IMAGES (Ajoutez vos nouvelles photos ici) ---
     const images = [
-        { src: 'media/bb.png', alt: 'Présentation des services Eco-Clean' },
+        { src: 'media/10.jpg', alt: 'Eco-Clean Services - Votre partenaire hygiène' },
+        { src: 'media/bb.png', alt: 'Intervention de nettoyage professionnel' },
         { src: 'media/c738b642-e4ce-4f8f-9fcd-7868498a8800.jpg', alt: 'Expertise en désinfection des locaux' },
-        { src: 'media/58aac069-733a-4760-8c71-b8fdad9aa91e.jpg', alt: 'Traitement de dératisation en entrepôt' },
-        { src: 'media/5af448d4-7b6f-41ff-8afc-9e2b75b2af73.jpg', alt: 'Entretien et hygiène des surfaces' },
-        { src: 'media/e7c8256e-8895-4a67-8a27-2ffa918e155a.jpg', alt: 'Traitement phytosanitaire des espaces verts' },
-        { src: 'media/agasa.jpg', alt: 'Certificat de conformité sanitaire AGASA' },
-        { src: 'media/Ministère de la santé.webp', alt: 'Agrément officiel du Ministère de la Santé' },
-        { src: 'media/IMG_1253.PNG', alt: 'Eco-Clean Services - Votre partenaire hygiène' },
-        // Ajoutez vos autres photos ci-dessous sur le même modèle :
-        // { src: 'media/nom-de-votre-photo.jpg', alt: 'Description de la photo' },
-        // { src: 'media/autre-intervention.png', alt: 'Une autre intervention' }
+        { src: 'media/5.jpg', alt: 'Traitement de dératisation en entrepôt' },
+        { src: 'media/6.jpg', alt: 'Entretien et hygiène des surfaces' },
+        { src: 'media/4.jpg', alt: 'Traitement phytosanitaire des espaces verts' },
+        { src: 'media/8.jpg', alt: 'Certificat de conformité sanitaire AGASA' },
+        { src: 'media/9.jpg', alt: 'Agrément officiel du Ministère de la Santé' },
+        { src: 'media/1.jpg', alt: 'Description de l\'image' },
+        { src: 'media/2.jpg', alt: 'Description de l\'image' },
+        { src: 'media/3.jpg', alt: 'Description de l\'image' },
+        { src: 'media/11.jpg', alt: 'Description de l\'image' },
+        { src: 'media/12.jpg', alt: 'Description de l\'image' },
+        { src: 'media/13.jpg', alt: 'Description de l\'image' },
+        { src: 'media/14.jpg', alt: 'Description de l\'image' },
+        { src: 'media/15.jpg', alt: 'Description de l\'image' },
+        { src: 'media/16.jpg', alt: 'Description de l\'image' },
+        { src: 'media/17.jpg', alt: 'Description de l\'image' },
+        { src: 'media/18.jpg', alt: 'Description de l\'image' },
+        { src: 'media/19.jpg', alt: 'Description de l\'image' },
+        { src: 'media/20.jpg', alt: 'Description de l\'image' },
+        { src: 'media/21.jpg', alt: 'Description de l\'image' },
+        { src: 'media/22.jpg', alt: 'Description de l\'image' },
+        { src: 'media/23.jpg', alt: 'Description de l\'image' },
+        // Pour ajouter une nouvelle image, copiez la ligne ci-dessous et modifiez le nom du fichier :
+        // { src: 'media/votre-image.jpg', alt: 'Description de l\'image' },
     ];
 
     // Génération automatique des miniatures
@@ -375,6 +390,33 @@ document.addEventListener('DOMContentLoaded', function() {
         if (touchEnd - touchStart > 40) prevBtn.click(); // Swipe right
         startAutoPlay();
     }, {passive: true});
+
+    // --- DRAG TO SCROLL POUR LES MINIATURES ---
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    thumbnailsContainer.addEventListener('mousedown', (e) => {
+        isDown = true;
+        thumbnailsContainer.classList.add('active');
+        startX = e.pageX - thumbnailsContainer.offsetLeft;
+        scrollLeft = thumbnailsContainer.scrollLeft;
+        stopAutoPlay();
+    });
+    thumbnailsContainer.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+    thumbnailsContainer.addEventListener('mouseup', () => {
+        isDown = false;
+        startAutoPlay();
+    });
+    thumbnailsContainer.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - thumbnailsContainer.offsetLeft;
+        const walk = (x - startX) * 2; // Vitesse de défilement
+        thumbnailsContainer.scrollLeft = scrollLeft - walk;
+    });
 
     // Initialisation
     updateSliderDisplay();
