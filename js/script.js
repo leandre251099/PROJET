@@ -65,72 +65,87 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const handleNavbarScroll = () => {
         const heroHeight = heroSection.offsetHeight;
-        if (window.scrollY > (heroHeight - 100)) {
-            // État Opaque (Sortie du Hero)
-            navbar.classList.add('bg-white/95', 'dark:bg-slate-900/95', 'backdrop-blur-md', 'shadow-md', 'scrolled');
-            navbar.classList.remove('bg-black/10', 'backdrop-blur-[2px]', 'shadow-lg');
+        const isMobile = window.innerWidth < 1024; // Détecte si l'écran est mobile (breakpoint lg de Tailwind)
 
-            // Reduce padding of inner container
-            navbarInnerContainer.classList.remove('py-6');
-            navbarInnerContainer.classList.add('py-3');
-            
-            // Reduce logo size
-            navbarLogoImg.classList.remove('w-20', 'h-20', 'sm:w-24', 'lg:w-32');
-            navbarLogoImg.classList.add('w-14', 'h-14', 'sm:w-16', 'lg:w-20');
+        navbar.classList.remove('hidden'); // S'assure que la navbar n'est pas cachée par défaut
 
-            // Reduce logo text size
-            logoText.classList.add('text-emerald-700', 'dark:text-emerald-400');
-            logoText.classList.remove('text-white', 'text-xl', 'sm:text-2xl', 'md:text-3xl', 'lg:text-4xl');
-            logoText.classList.add('text-lg', 'sm:text-xl', 'md:text-2xl', 'lg:text-3xl');
-            
-            navLinks.forEach(link => {
-                link.classList.add('text-emerald-900', 'dark:text-emerald-50');
-                link.classList.remove('text-white/90');
-            });
-            // Reduce desktop nav links text size
-            navbarLinksDesktop.classList.remove('text-xl');
-            navbarLinksDesktop.classList.add('text-base');
-
-            themeBtn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-emerald-600', 'dark:text-emerald-400', 'hover:bg-slate-200', 'dark:hover:bg-slate-700');
-            themeBtn.classList.remove('bg-white/10', 'text-white', 'hover:bg-white/20', 'p-3');
-            themeBtn.classList.add('p-2'); // Reduce padding for theme button
-
-            // Mobile Menu Button (when opaque)
-            mobileBtn.classList.add('text-emerald-700', 'dark:text-emerald-400', 'hover:text-emerald-800', 'dark:hover:text-emerald-300', 'bg-slate-100', 'dark:bg-slate-800', 'hover:bg-slate-200', 'dark:hover:bg-slate-700');
-            mobileBtn.classList.remove('text-white', 'bg-transparent', 'text-3xl', 'p-2');
-            mobileBtn.classList.add('text-2xl', 'p-1.5'); // Reduce size and padding for mobile button
-            mobileBtnIcon.classList.remove('shadow-sm'); // Supprime l'ombre de l'icône mobile
+        if (isMobile) {
+            if (window.scrollY > (heroHeight - 100)) {
+                // Cacher la navbar sur mobile quand on sort du Hero
+                navbar.classList.add('hidden');
+            } else {
+                // Afficher la navbar sur mobile quand on est dans le Hero
+                navbar.classList.remove('hidden');
+            }
         } else {
-            // État Transparent (Dans le Hero)
-            navbar.classList.remove('bg-white/95', 'dark:bg-slate-900/95', 'backdrop-blur-md', 'shadow-md', 'scrolled');
-            navbar.classList.add('bg-black/10', 'backdrop-blur-[2px]', 'shadow-lg');
-            
-            // Restore padding of inner container
-            navbarInnerContainer.classList.remove('py-3');
-            navbarInnerContainer.classList.add('py-6');
+            // Logique pour les écrans desktop (ou mobile quand la navbar est visible dans le Hero)
+            if (window.scrollY > (heroHeight - 100)) {
+                // État Opaque (Sortie du Hero)
+                navbar.classList.add('bg-white/95', 'dark:bg-slate-900/95', 'backdrop-blur-md', 'shadow-md', 'scrolled');
+                navbar.classList.remove('bg-black/10', 'backdrop-blur-[2px]', 'shadow-lg');
 
-            // Restore logo size
-            navbarLogoImg.classList.remove('w-14', 'h-14', 'sm:w-16', 'lg:w-20');
-            navbarLogoImg.classList.add('w-20', 'h-20', 'sm:w-24', 'lg:w-32');
+                // Réduire le padding du conteneur interne
+                navbarInnerContainer.classList.remove('py-6');
+                navbarInnerContainer.classList.add('py-3');
+                
+                // Réduire la taille du logo
+                navbarLogoImg.classList.remove('w-20', 'h-20', 'sm:w-24', 'lg:w-32');
+                navbarLogoImg.classList.add('w-14', 'h-14', 'sm:w-16', 'lg:w-20');
 
-            // Restore logo text size
-            logoText.classList.remove('text-emerald-700', 'dark:text-emerald-400', 'text-lg', 'sm:text-xl', 'md:text-2xl', 'lg:text-3xl');
-            logoText.classList.add('text-white', 'text-xl', 'sm:text-2xl', 'md:text-3xl', 'lg:text-4xl');
-            
-            navLinks.forEach(link => {
-                link.classList.remove('text-emerald-900', 'dark:text-emerald-50');
-                link.classList.add('text-white/90');
-            });
-            // Restore desktop nav links text size
-            navbarLinksDesktop.classList.remove('text-base');
-            navbarLinksDesktop.classList.add('text-xl');
+                // Réduire la taille du texte du logo
+                logoText.classList.add('text-emerald-700', 'dark:text-emerald-400');
+                logoText.classList.remove('text-white', 'text-xl', 'sm:text-2xl', 'md:text-3xl', 'lg:text-4xl');
+                logoText.classList.add('text-lg', 'sm:text-xl', 'md:text-2xl', 'lg:text-3xl');
+                
+                navLinks.forEach(link => {
+                    link.classList.add('text-emerald-900', 'dark:text-emerald-50');
+                    link.classList.remove('text-white/90');
+                });
+                // Réduire la taille du texte des liens de navigation desktop
+                navbarLinksDesktop.classList.remove('text-xl');
+                navbarLinksDesktop.classList.add('text-base');
 
-            themeBtn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-emerald-600', 'dark:text-emerald-400', 'hover:bg-slate-200', 'dark:hover:bg-slate-700', 'p-2');
-            themeBtn.classList.add('bg-white/10', 'text-white', 'hover:bg-white/20', 'p-3');
+                themeBtn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-emerald-600', 'dark:text-emerald-400', 'hover:bg-slate-200', 'dark:hover:bg-slate-700');
+                themeBtn.classList.remove('bg-white/10', 'text-white', 'hover:bg-white/20', 'p-3');
+                themeBtn.classList.add('p-2'); // Réduire le padding du bouton de thème
 
-            mobileBtn.classList.remove('text-emerald-700', 'dark:text-emerald-400', 'hover:text-emerald-800', 'dark:hover:text-emerald-300', 'bg-slate-100', 'dark:bg-slate-800', 'hover:bg-slate-200', 'dark:hover:bg-slate-700', 'text-2xl', 'p-1.5');
-            mobileBtn.classList.add('text-white', 'bg-transparent', 'text-3xl', 'p-2');
-            mobileBtnIcon.classList.add('shadow-sm'); // Ajoute l'ombre de l'icône mobile
+                // Bouton du menu mobile (quand opaque)
+                mobileBtn.classList.add('text-emerald-700', 'dark:text-emerald-400', 'hover:text-emerald-800', 'dark:hover:text-emerald-300', 'bg-slate-100', 'dark:bg-slate-800', 'hover:bg-slate-200', 'dark:hover:bg-slate-700');
+                mobileBtn.classList.remove('text-white', 'bg-transparent', 'text-3xl', 'p-2');
+                mobileBtn.classList.add('text-2xl', 'p-1.5'); // Réduire la taille et le padding du bouton mobile
+                mobileBtnIcon.classList.remove('shadow-sm'); // Supprime l'ombre de l'icône mobile
+            } else {
+                // État Transparent (Dans le Hero)
+                navbar.classList.remove('bg-white/95', 'dark:bg-slate-900/95', 'backdrop-blur-md', 'shadow-md', 'scrolled');
+                navbar.classList.add('bg-black/10', 'backdrop-blur-[2px]', 'shadow-lg');
+                
+                // Restaurer le padding du conteneur interne
+                navbarInnerContainer.classList.remove('py-3');
+                navbarInnerContainer.classList.add('py-6');
+
+                // Restaurer la taille du logo
+                navbarLogoImg.classList.remove('w-14', 'h-14', 'sm:w-16', 'lg:w-20');
+                navbarLogoImg.classList.add('w-20', 'h-20', 'sm:w-24', 'lg:w-32');
+
+                // Restaurer la taille du texte du logo
+                logoText.classList.remove('text-emerald-700', 'dark:text-emerald-400', 'text-lg', 'sm:text-xl', 'md:text-2xl', 'lg:text-3xl');
+                logoText.classList.add('text-white', 'text-xl', 'sm:text-2xl', 'md:text-3xl', 'lg:text-4xl');
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-emerald-900', 'dark:text-emerald-50');
+                    link.classList.add('text-white/90');
+                });
+                // Restaurer la taille du texte des liens de navigation desktop
+                navbarLinksDesktop.classList.remove('text-base');
+                navbarLinksDesktop.classList.add('text-xl');
+
+                themeBtn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-emerald-600', 'dark:text-emerald-400', 'hover:bg-slate-200', 'dark:hover:bg-slate-700', 'p-2');
+                themeBtn.classList.add('bg-white/10', 'text-white', 'hover:bg-white/20', 'p-3');
+
+                mobileBtn.classList.remove('text-emerald-700', 'dark:text-emerald-400', 'hover:text-emerald-800', 'dark:hover:text-emerald-300', 'bg-slate-100', 'dark:bg-slate-800', 'hover:bg-slate-200', 'dark:hover:bg-slate-700', 'text-2xl', 'p-1.5');
+                mobileBtn.classList.add('text-white', 'bg-transparent', 'text-3xl', 'p-2');
+                mobileBtnIcon.classList.add('shadow-sm'); // Ajoute l'ombre de l'icône mobile
+            }
         }
     };
 
