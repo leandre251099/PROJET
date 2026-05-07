@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!data) return;
             
             const text = `Bonjour, je m'appelle ${data.nom}. Tél: ${data.telephone}. Email: ${data.email}. Message: ${data.message}. Je souhaite un devis.`;
-            const url = `https://wa.me/077959626?text=${encodeURIComponent(text)}`;
+            const url = `https://wa.me/074227737?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         });
     }
@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const subject = 'Demande de devis - PEG BTP Service 3D';
             const body = `Nom: ${data.nom}\nTéléphone: ${data.telephone}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
-            const url = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            const url = `mailto:ecocleanservices91@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             window.location.href = url;
         });
     }
