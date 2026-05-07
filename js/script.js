@@ -50,6 +50,93 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- NAVIGATION ---
 
+    // Gestion du changement d'apparence de la navbar au scroll
+    const navbar = document.querySelector('nav');
+    const heroSection = document.getElementById('accueil');
+    const logoText = navbar.querySelector('h1');
+    const navLinks = navbar.querySelectorAll('.nav-link');
+    const themeBtn = document.getElementById('theme-toggle');
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileBtnIcon = mobileBtn.querySelector('i'); // Cibler l'icône à l'intérieur du bouton mobile
+    
+    const navbarInnerContainer = document.getElementById('navbar-inner-container');
+    const navbarLogoImg = document.getElementById('navbar-logo-img');
+    const navbarLinksDesktop = document.getElementById('navbar-links-desktop');
+
+    const handleNavbarScroll = () => {
+        const heroHeight = heroSection.offsetHeight;
+        if (window.scrollY > (heroHeight - 100)) {
+            // État Opaque (Sortie du Hero)
+            navbar.classList.add('bg-white/95', 'dark:bg-slate-900/95', 'backdrop-blur-md', 'shadow-md', 'scrolled');
+            navbar.classList.remove('bg-black/10', 'backdrop-blur-[2px]', 'shadow-lg');
+
+            // Reduce padding of inner container
+            navbarInnerContainer.classList.remove('py-6');
+            navbarInnerContainer.classList.add('py-3');
+            
+            // Reduce logo size
+            navbarLogoImg.classList.remove('w-20', 'h-20', 'sm:w-24', 'lg:w-32');
+            navbarLogoImg.classList.add('w-14', 'h-14', 'sm:w-16', 'lg:w-20');
+
+            // Reduce logo text size
+            logoText.classList.add('text-emerald-700', 'dark:text-emerald-400');
+            logoText.classList.remove('text-white', 'text-xl', 'sm:text-2xl', 'md:text-3xl', 'lg:text-4xl');
+            logoText.classList.add('text-lg', 'sm:text-xl', 'md:text-2xl', 'lg:text-3xl');
+            
+            navLinks.forEach(link => {
+                link.classList.add('text-emerald-900', 'dark:text-emerald-50');
+                link.classList.remove('text-white/90');
+            });
+            // Reduce desktop nav links text size
+            navbarLinksDesktop.classList.remove('text-xl');
+            navbarLinksDesktop.classList.add('text-base');
+
+            themeBtn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-emerald-600', 'dark:text-emerald-400', 'hover:bg-slate-200', 'dark:hover:bg-slate-700');
+            themeBtn.classList.remove('bg-white/10', 'text-white', 'hover:bg-white/20', 'p-3');
+            themeBtn.classList.add('p-2'); // Reduce padding for theme button
+
+            // Mobile Menu Button (when opaque)
+            mobileBtn.classList.add('text-emerald-700', 'dark:text-emerald-400', 'hover:text-emerald-800', 'dark:hover:text-emerald-300', 'bg-slate-100', 'dark:bg-slate-800', 'hover:bg-slate-200', 'dark:hover:bg-slate-700');
+            mobileBtn.classList.remove('text-white', 'bg-transparent', 'text-3xl', 'p-2');
+            mobileBtn.classList.add('text-2xl', 'p-1.5'); // Reduce size and padding for mobile button
+            mobileBtnIcon.classList.remove('shadow-sm'); // Supprime l'ombre de l'icône mobile
+        } else {
+            // État Transparent (Dans le Hero)
+            navbar.classList.remove('bg-white/95', 'dark:bg-slate-900/95', 'backdrop-blur-md', 'shadow-md', 'scrolled');
+            navbar.classList.add('bg-black/10', 'backdrop-blur-[2px]', 'shadow-lg');
+            
+            // Restore padding of inner container
+            navbarInnerContainer.classList.remove('py-3');
+            navbarInnerContainer.classList.add('py-6');
+
+            // Restore logo size
+            navbarLogoImg.classList.remove('w-14', 'h-14', 'sm:w-16', 'lg:w-20');
+            navbarLogoImg.classList.add('w-20', 'h-20', 'sm:w-24', 'lg:w-32');
+
+            // Restore logo text size
+            logoText.classList.remove('text-emerald-700', 'dark:text-emerald-400', 'text-lg', 'sm:text-xl', 'md:text-2xl', 'lg:text-3xl');
+            logoText.classList.add('text-white', 'text-xl', 'sm:text-2xl', 'md:text-3xl', 'lg:text-4xl');
+            
+            navLinks.forEach(link => {
+                link.classList.remove('text-emerald-900', 'dark:text-emerald-50');
+                link.classList.add('text-white/90');
+            });
+            // Restore desktop nav links text size
+            navbarLinksDesktop.classList.remove('text-base');
+            navbarLinksDesktop.classList.add('text-xl');
+
+            themeBtn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-emerald-600', 'dark:text-emerald-400', 'hover:bg-slate-200', 'dark:hover:bg-slate-700', 'p-2');
+            themeBtn.classList.add('bg-white/10', 'text-white', 'hover:bg-white/20', 'p-3');
+
+            mobileBtn.classList.remove('text-emerald-700', 'dark:text-emerald-400', 'hover:text-emerald-800', 'dark:hover:text-emerald-300', 'bg-slate-100', 'dark:bg-slate-800', 'hover:bg-slate-200', 'dark:hover:bg-slate-700', 'text-2xl', 'p-1.5');
+            mobileBtn.classList.add('text-white', 'bg-transparent', 'text-3xl', 'p-2');
+            mobileBtnIcon.classList.add('shadow-sm'); // Ajoute l'ombre de l'icône mobile
+        }
+    };
+
+    window.addEventListener('scroll', handleNavbarScroll);
+    handleNavbarScroll(); // Appel initial
+
     // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
