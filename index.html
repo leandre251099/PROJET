@@ -27,6 +27,32 @@
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300">
 
+    <!-- Loader de Bienvenue -->
+    <div id="loader" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white dark:bg-slate-950 transition-all duration-700">
+        <div class="relative flex flex-col items-center w-full px-6 overflow-hidden">
+            <!-- Logo avec assemblage, balayage lumineux et zoom arrière -->
+            <div class="relative mb-12 logo-animation-container">
+                <div class="relative overflow-hidden logo-wrapper animate-logo-assemble-zoom rounded-full">
+                    <img src="/media/IMG_1253.PNG" alt="Logo Eco-Clean" class="w-28 h-28 sm:w-40 sm:h-40 object-contain rounded-full">
+                    <!-- Effet de balayage lumineux -->
+                    <div class="absolute top-0 bottom-0 left-[-25%] w-[150%] bg-gradient-to-r from-transparent via-white/60 to-transparent animate-light-sweep"></div>
+                </div>
+            </div>
+            
+            <!-- Barre de progression minimaliste -->
+            <div class="max-w-[200px] w-full h-[1px] bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full bg-emerald-500 w-0 animate-progress-fill"></div>
+            </div>
+            
+            <!-- Sous-titre élégant -->
+            <div class="mt-6 text-center">
+                <p class="text-emerald-600 dark:text-emerald-400 font-bold tracking-[0.3em] sm:tracking-[0.5em] text-[10px] sm:text-xs uppercase opacity-0 animate-fade-in-up">
+                    Expert en Hygiène & BTP
+                </p>
+            </div>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-black/10 backdrop-blur-[2px] border-none shadow-lg transition-all duration-300">
         <div id="navbar-inner-container" class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center transition-all duration-300">

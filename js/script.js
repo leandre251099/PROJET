@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // --- GESTION DU LOADER ---
+    const loader = document.getElementById('loader');
+    if (loader) {
+        document.body.style.overflow = 'hidden'; // Empêche le scroll pendant le chargement
+        
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                loader.classList.add('loader-hidden');
+                document.body.style.overflow = ''; // Rétablit le scroll
+            }, 3500); // Augmenté à 3.5s pour correspondre à la nouvelle durée cinématique
+        });
+    }
+
     // Initialisation des animations AOS
     if (typeof AOS !== 'undefined') {
         AOS.init({
