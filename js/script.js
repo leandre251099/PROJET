@@ -425,6 +425,22 @@ document.addEventListener('DOMContentLoaded', function() {
     updateSliderDisplay();
     startAutoPlay();
 
+    // --- CONFIGURATION FIREBASE ---
+    const firebaseConfig = {
+        apiKey: "VOTRE_API_KEY",
+        authDomain: "VOTRE_PROJECT_ID.firebaseapp.com",
+        projectId: "VOTRE_PROJECT_ID",
+        storageBucket: "VOTRE_PROJECT_ID.appspot.com",
+        messagingSenderId: "VOTRE_SENDER_ID",
+        appId: "VOTRE_APP_ID"
+    };
+
+    // Initialiser Firebase
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+    const db = firebase.firestore();
+
     // --- GESTION DES AVIS ET ÉTOILES ---
     const starContainer = document.getElementById('star-rating');
     const stars = starContainer ? starContainer.querySelectorAll('i') : [];
@@ -472,9 +488,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isNew && typeof AOS !== 'undefined') AOS.refresh();
     }
 
-    // Charger les avis sauvegardés au chargement
-    const savedReviews = JSON.parse(localStorage.getItem('eco-clean-reviews') || '[]');
-    savedReviews.forEach(r => addReviewToDOM(r.name, r.comment, r.rating));
+    // --- CHARGEMENT DES AVIS EN TEMPS RÉEL DEPUIS FIREBASE ---
+    db.collection("reviews").orderBy("createdAt", "desc").onSnapshot((snapshot) => {
+        // Optionnel : On peut vider la grille pour ne pas avoir de doublons 
+        // si vous souhaitez que Firebase gère TOUS les avis (y compris les 3 statiques)
+        // reviewsGrid.innerHTML = ''; 
+        
+        snapshot.docChanges().forEach((change) => {
+            if (change.type === "added") {
+                const r = change.doc.data();
+                addReviewToDOM(r.name, r.comment, r.rating, true);
+            }
+        });
+    });
 
     // Soumission du formulaire
     if (reviewForm) {
@@ -489,14 +515,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const name = document.getElementById('review-name').value;
             const comment = document.getElementById('review-comment').value;
 
-            // Sauvegarde locale
-            const newReview = { name, comment, rating: parseInt(currentRating) };
-            const allReviews = JSON.parse(localStorage.getItem('eco-clean-reviews') || '[]');
-            allReviews.push(newReview);
-            localStorage.setItem('eco-clean-reviews', JSON.stringify(allReviews));
+            // --- SAUVEGARDE SUR FIREBASE ---
+            db.collection("reviews").add({
+                name: name,
+                comment: comment,
+                rating: parseInt(currentRating),
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(() => {
+                console.log("Avis publié !");
+            })
+            .catch((error) => {
+                console.error("Erreur : ", error);
+                alert("Erreur lors de la publication de l'avis.");
+            });
 
-            // Mise à jour interface
-            addReviewToDOM(name, comment, currentRating, true);
             reviewForm.reset();
             currentRating = 0;
             highlightStars(0);
